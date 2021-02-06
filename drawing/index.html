@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing on the Web Portfolio</title>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap');
+        
+        html body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }h1, h2{
+            font-family: 'Big Shoulders Display', cursive;
+        }
+        h1{
+            vertical-align: middle;
+            margin-top: auto;
+            margin-bottom: auto;
+            color: white;
+        }h2{
+            padding: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin: auto;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 35px;
+            overflow-wrap: break-word;
+            /* border: 1px solid rgba(0,0,0,0.2); */
+            background-color: rgba(255,255,255,0.4);
+        }
+        .box{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            width: 100vw;
+            height: 11vh;
+            background-color: black;
+            z-index: -1;
+        }
+        .content{
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 870px;
+            max-height: 550px;
+            justify-content: center;
+            width: 100%;
+            height: 70vh;
+            margin: 10px;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        .project{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 150px;
+            min-height: 150px;
+            width: 10%;
+            height: 20%;
+            background-color: black;
+            border: solid black 5px;
+            border-radius: 15px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"><h1>~Drawing on the Web~</h1></div>
+    <div class="content">
+        <div class="project">
+            <h2>HTML and CSS</h2>
+        </div>
+        <div class="project">
+            <h2>SVG</h2>
+        </div>
+        <div class="project">
+            <h2>CSS Animation</h2>
+        </div>
+        <div class="project">
+            <h2>JavaScript</h2>
+        </div>
+        <div class="project">
+            <h2>Web APIs</h2>
+        </div>
+        <div class="project">
+            <h2>HTML Canvas</h2>
+        </div>
+        <div class="project">
+            <h2>WebGL</h2>
+        </div>
+        <div class="project">
+            <h2>Final Project</h2>
+        </div>
+           
+    </div>
+    <div class="box"><h1>Adam Chou</h1></div>
+</body>
+<script>
+    //make a randomizer
+    window.onload = (e) => {
+        
+        var allprojects = document.getElementsByClassName("project");
+        for(let i = 0; i<allprojects.length; i++){
+            //choose random variable
+            var randomnum = Math.floor(Math.random() * 3) + 1;
+            //assign image to element
+            allprojects[i].style.backgroundImage = 'url("images/kermit' + String(randomnum)+ '.jpg")';
+            allprojects[i].addEventListener("click", (e) => {
+                window.location= './homework_'+ String(i+1);
+            });
+        }
+    }
+</script>
+</html>

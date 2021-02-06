@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML_CSS_Project</title>
+</head>
+<style>
+    html body{
+        padding: 0;
+        margin: 0;
+    }body{
+        background-color: black;
+        text-align: center;
+
+    }.video_container{
+        /* margin-top: 5%; */
+        /* border: solid black 20px; */
+        display: flex;
+        /* border-radius: 40%; */
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        background-color: rgba(121,21,142,0.3);
+        width: 100vw;
+        height: 100vh;
+        /* margin-left: 10%; */
+        z-index: -1;
+        filter: hue-rotate(60deg);
+    }video{
+        filter: blur(1px);
+        width: auto;
+        height: auto;
+        background-size: cover;
+        bottom: 0;
+        right: 0;
+        max-height: 50vh;
+        /* border-radius: 40%; */
+    }img{
+        position: static;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }.video_piece{
+        display: flex;
+        flex-direction: column; 
+        justify-content: center;
+        align-content: center;
+        mix-blend-mode: color-burn;
+        filter: hue-rotate(50deg);
+    }.textflex{
+        background-color: white;
+        opacity: 0.8;
+    }.textflex > h1{
+        vertical-align: middle;
+        position: absolute;
+        font-size: 25px;
+        color: white;
+        margin: 10px;
+    }.col1, .col2{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }.col1{
+        float: left;
+    }.col2{
+        float: right;
+    }.image_container{
+        position: fixed;
+          /* margin-top: 5%; */
+        /* border: solid black 20px; */
+        display: flex;
+        color: rgba(121,21,142);
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+    }.audio_piece{
+        width: 20%;
+        height: 5%;
+        position: fixed;
+        mix-blend-mode: luminosity;
+        opacity: 0.2;
+        bottom: 47.5vh;
+        transition: opacity .25s ease-in-out;
+    }audio:hover{
+        mix-blend-mode: luminosity;
+        opacity: 1;
+    }img{
+        filter: saturate(3) hue-rotate(90deg) blur(1px);
+        position: absolute;
+        z-index: 2;
+        mix-blend-mode: darken;
+    }#img_1{
+        min-width: 240px;
+        min-height: 240px;
+        width: 23vw;
+        height: 27vh;
+        top: -32vh;
+        left: 59.5%;
+    }#img_2{
+        min-width: 50px;
+        min-height: 80px;
+        width: 8%;
+        height: 11%;
+        /* transform: rotate(320deg); */
+        top: -65vh;
+        left: 61%;
+    }#img_3{
+        min-width: 40px;
+        min-height: 40px;
+        width: 10%;
+        height: 13%;
+        transform: rotate(320deg);
+        top: -45vh;
+        left: 28%;
+    }
+</style>
+<body>
+
+    <!-- 
+        Your HTML and CSS drawing should seamlessly take up the full browser window.
+        There should be at least three separate layers of imagery on the page 
+        (i.e. foreground, background, and in-between).
+        At least one layer should use CSS grid to arrange elements on the page.
+        Your drawing should include music or sound using the HTML <audio> element.
+        Your drawing should include video using the HTML <video> element.
+        Audio and video files should be compressed and optimized for the web.
+        While the HTML and CSS code should be your own, 
+        feel free to incorporate found images and media into the project. 
+        This page is intended to be seen and experienced more than read;
+        as such, you should limit HTML text on the page.
+     -->
+    
+        <div class="video_container">
+            <div class="col1">
+                <div class="video_piece video2">
+                    <!-- <div class="textflex"><h1>Brooklyn</h1></div> -->
+                    <video muted autoplay loop>
+                        <source src="media/subway_4.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video_piece video3">
+                    <!-- <div class="textflex"><h1>The Bronx</h1></div> -->
+                    <video muted autoplay loop>
+                        <source src="media/subway_3.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="col2">
+                <div class="video_piece video4">
+                    <!-- <div class="textflex"><h1>Queens</h1></div> -->
+                    <video muted autoplay loop>
+                        <source src="media/subway_1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video_piece video1">
+                    <video muted autoplay loop>
+                        <source src="media/subway_2.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+            </div>
+            
+            
+        </div>
+        <div class="image_container">
+            <img id="img_1" src="media/gorillaz.png">
+            <img id="img_2" src="media/teddy.png">
+            <img>
+            <img>
+            <audio class= "audio_piece" autoplay loop controls>
+                <source src="media/closing train.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+
+    <!-- <div class='background'>
+
+        <audio></audio>
+        <video>
+            <source>
+            <source>
+        </video>
+
+    </div> -->
+    
+
+</body>
+</html>
