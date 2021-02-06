@@ -1,0 +1,48 @@
+<style>
+
+/* Fonts: //heal the web.site
+//the league of movable type
+//open/foundary */
+
+    .wrapper{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        /* gap between pixels */
+        column-gap: 10px;
+
+        grid-template-areas:
+        /* you cannot overlap items with this property */
+        /* Visual layout of a grid 
+        using grid-area from classes*/ 
+            'b a a e'
+            'b a a e'
+            'b c c e'
+            'b d d f';
+            /* can use '.' in order to signify empty space */
+
+        
+    }
+
+    /* can view grid in inspect */
+    .a{
+        grid-area: a;
+        /* Use in order to change individual properties*/
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        /* shorthand */
+        grid-column: 1/2;
+        grid-row: 2/4;
+    }
+    .b{
+        grid-area: b;
+    }
+
+    .camera{
+        object-fit: cover;
+        mix-blend-mode: overlay;
+    }
+</style>
