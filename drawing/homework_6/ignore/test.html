@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML Canvas</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      canvas {background-color: lightgray;} /* change or remove this color */
+    </style>
+  </head>
+
+  <body>
+    <div id="frame">
+      <canvas id="c1" width="600" height="400"></canvas>
+      <canvas id="c2" width="600" height="400"></canvas>
+    </div>
+  </body>
+  <script>
+
+
+//First draft, ignore
+
+
+
+
+
+
+
+
+
+      /* At least one drawing should include a custom shape drawn with path methods of the canvas API.
+        At least one drawing should include a photographic image or video whose pixel data is 
+        manipulated with the ImageData object. 
+        Each of the canvas drawings should be visibly animated with the window object’s requestAnimationFrame() method.
+      */
+
+      //declare dom elements
+      const frame = document.getElementById("frame");
+      const canvas1 = document.getElementById("c1"); const canvas2 = document.getElementById("c2"); //get element
+      const context1 = canvas1.getContext('2d'); const context2 = canvas2.getContext('2d'); //get context
+      //make image
+      const imageFrame = document.createElement("div");
+      const image = document.createElement("img");
+      imageFrame.style.display = "None";
+      image.alt = "This is a photo";
+      image.src = "icon/scene.jpeg";
+      imageFrame.appendChild(image)
+      document.querySelector("body").appendChild(imageFrame)
+
+      const imageData = document.querySelector("img")
+
+      let width;
+      let height;
+
+      let pixelScale = window.devicePixelRatio; //set pixel ratio
+
+      function setup() {
+        width = window.innerWidth/2;
+        height = window.innerHeight;
+
+        canvas1.width = width * pixelScale; canvas2.width = width * pixelScale; //set width to scale
+        canvas1.height = height * pixelScale; canvas2.height = height * pixelScale; //set height to scale
+
+        context1.scale(pixelScale, pixelScale); context2.scale(pixelScale, pixelScale); //scale context
+      }
+
+      let red = {"shift" : 0, "polarity": -1};
+      let green = {"shift" : 1, "polarity": 1};
+      let factor = 2; // 
+
+      function canvas_draw1() {
+        //At least one drawing should include a photographic image or video whose pixel data is 
+        // manipulated with the ImageData object.
+
+        //based quite a bit from the example. https://i6.cims.nyu.edu/~jc3436/drawing/canvas/animated-pixel-processing-2.html
+        //I wanted to recreate the violent colors I saw at EDM concerts
+        scale = {"scale": 3}
+        dimensions = {"width":  (canvas1.width/pixelScale)/2, "height": (canvas1.height/pixelScale)/2}
+        
+        // context1.drawImage(imageData, 0, 0, dimensions.width, dimensions.height);
+
+        for (let i = 0; i<scale.scale-1; i++){ // horizontal
+          // context1.scale(1,-1)
+          for (let j = 0; j<scale.scale-1; j++){ // vertical
+            // context1.scale(-1,1)
+            context1.drawImage(imageData, dimensions.width*i, dimensions.height*j, dimensions.width, dimensions.height);
+          }
+          
+        }
+        let pixels = context1.getImageData(0, 0, canvas1.width, canvas1.height);
+        let data = pixels.data;
+
+        context1.clearRect(0, 0, canvas1.width, canvas1.height); //clear canvas
+
+        red.shift += red.polarity * factor;
+        green.shift += green.polarity * factor;
+
+        // locate and shift pixels
+        for (let y = 0; y < pixels.height; y++) {
+          for (let x = 0; x < pixels.width; x++) {
+            let index = (x + y * pixels.width) * 4; // index position of every pixel
+            data[index + 0] = data[(index + 0) + red.shift]; // shift red channel
+            data[index + 1] = data[(index + 1) + green.shift]; // shift green channel
+          }
+        }
+        
+        colorShift = [45,48,50] //how much to shift by
+        if (red.shift >= colorShift[Math.floor(Math.random()*(colorShift.length-1))] || //random shift
+            red.shift <= -1* colorShift[Math.floor(Math.random()*(colorShift.length-1))]) { //random shift
+          red.polarity *= -1;
+          green.polarity *= -1;
+        }
+        context1.putImageData(pixels, 0, 0); // write pixels to the canvas
+        requestAnimationFrame(canvas_draw1) //redraw canvas
+      }
+    
+
+      function canvas_draw2() {
+        // At least one drawing should include a custom shape drawn with path methods of the canvas API.
+
+      }
+
+      window.addEventListener('load', () => { setup(); canvas_draw1(); canvas_draw2(); });
+      window.addEventListener('resize', () => { setup(); canvas_draw1(); canvas_draw2() });
+
+
+
+
+
+
+
+
+
+
+
+      /*
+      
+      */
+  </script>
+</html>
+
+
+

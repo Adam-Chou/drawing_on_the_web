@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drums and Stuff</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+        body{
+            display: flex;
+            margin: 0;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            background: radial-gradient(white, rgb(255, 177, 31));
+        }h1{
+            font-family: 'RocknRoll One', sans-serif;
+            position: absolute;
+            top: 10%;
+            margin: 0px;
+            transform: translateX(30px) translateY(40px) rotate(30deg);
+        }
+        
+        #scene{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }.drum{
+            width: 100%;
+            height: 100%; 
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        /* Octagon */
+        .octagon{
+            position: absolute;
+            transform-style: preserve-3d;
+            transform-origin: -50% 50%;
+        }.octagon>.side{
+            position:absolute;
+            width: 202px;
+            height:117px;
+            background: radial-gradient(white, #e5cf91);
+            box-sizing: border-box;
+        }.octagon>.circle{
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(white, #e5cf91);
+        }.octagon:nth-child(1)>.circle{
+            transform: translateX(15px) translateY(-30px) translateZ(-2px);
+        }
+        .octagon:nth-child(2)>.circle{
+            transform: translateX(15px) translateY(-30px) translateZ(2px);
+        }
+        /* Octogon faces */
+        .octagon>.face2{
+            transform: rotateZ(60deg);
+        }.octagon>.face3{
+            transform: rotateZ(120deg);
+
+        }.octagon:nth-child(1){
+            transform: translateX(-60px) rotateY(30deg) rotateX(90deg) translateZ(-151px);
+            
+        }
+        .octagon:nth-child(2){
+            transform: translateX(-60px) rotateY(30deg) rotateX(90deg) translateZ(-1px);
+        }
+        .face{
+            /* rotate 60 degrees each side */
+            position: absolute;
+            width: 115px;
+            height: 150px;
+            background: radial-gradient(rgb(81, 30, 30),maroon);
+            border: 5px solid black;
+            box-sizing: border-box;
+        }
+        .face:nth-child(1){
+            transform: rotateY(60deg) translateZ(100px);
+        }.face:nth-child(2){
+            transform: rotateY(120deg) translateZ(100px);
+        }.face:nth-child(3){
+            transform: rotateY(180deg) translateZ(100px);
+        }.face:nth-child(4){
+            transform: rotateY(240deg) translateZ(100px);
+        }.face:nth-child(5){
+            transform: rotateY(300deg) translateZ(100px);
+        }.face:nth-child(6){
+            transform: rotateY(360deg) translateZ(100px);
+        }.face:nth-child(7){
+            transform: rotateY(420deg) translateZ(100px);
+        }.face:nth-child(8){
+            transform: rotateY(480deg) translateZ(100px);
+        }
+        /* animation */
+        @keyframes spin {
+            from {transform: rotateY(-40deg) rotateX(-60deg);}
+            to {transform: rotateY(320deg) rotateX(300deg) ;}
+        }
+        @keyframes color_c1{
+            from{background: rgb(255, 170, 170)}
+            /* {background: radial-gradient(white,rgb(255, 170, 170)) radial-gradient(white, #e5cf91);} */
+            to{background: #e5cf91;}
+            /* {background: radial-gradient(white, #e5cf91);} */
+        }
+        @keyframes color_c2{
+            from{background: rgb(192, 73, 105);}
+            to{background: rgb(83, 0, 0);}
+        }
+        @keyframes hit{
+            from{transform: translateY(200px) translateX(-200px) rotateY(50deg) rotateX(10deg) rotateZ(50deg);}
+            to{transform: translateY(200px) translateX(-200px) rotateY(50deg) rotateX(10deg) rotateZ(65deg);}
+        }
+        .drum{
+            transform: rotateY(-40deg) rotateX(-60deg);
+            transition: transform 2s;
+        }
+        .drum:hover>.octagon>.circle, .drum:hover>.octagon>.side{
+            background: radial-gradient(white,rgb(255, 170, 170));
+        }.drum:hover>.face{
+            background: radial-gradient(rgb(226, 127, 175),rgb(146, 51, 76));
+        }
+        .drum:active{   
+            animation: spin 6s linear infinite;
+            transform-origin: 50% 50%;
+        }.drum:active>.octagon>.circle, .drum:active>.octagon>.side{
+            animation: color_c1 ease-in 3s infinite alternate;
+        }.drum:active>.face{
+            animation: color_c2 ease-in 3s infinite alternate;
+        }
+        .drumstick1:hover{
+            animation: hit ease 500ms infinite alternate;
+        }
+        
+        .drumstick1{
+            height: 800px;
+            perspective: 400px;
+            perspective-origin: 50% 50%;
+            /* position: absolute; */
+            transform-style: preserve-3d;
+            transform: translateY(200px) translateX(-200px) rotateY(50deg) rotateX(10deg) rotateZ(50deg);
+        }
+        .rectface1, .rectface2{
+            position: relative;
+            transform-style: preserve-3d;
+            border: 1px solid rgb(105, 68, 37);
+            width: 10px;
+            height: 200px;
+            background: rgb(121, 90, 4);
+        }.rectfaceborder1, .rectface2{
+            width: 10px;
+            height: 10px;
+            /* border: 1px solid black; */
+        }
+        
+        .front{
+            transform: rotateY(0deg)translateY(-1px) translateZ(4px);
+            
+        }.rightside{
+            transform: rotateY(90deg)  translateY(-200px) translateZ(5px);
+            
+        }.back{
+            transform: rotateY(180deg) translateY(-404px) translateZ(7px);
+            
+        }.leftside{
+            transform: rotateY(270deg) translateY(-605px) translateZ(6px);
+            
+        }
+
+    </style>
+</head>
+<body>
+<!-- 
+    <h1>Hit me!</h1> -->
+    <div id="scene">
+
+        <!-- drum -->
+        <div class="drum">   
+            <div class="octagon"><div class="side face1"></div><div class="side face2"></div><div class="side face3"></div><div class="circle"></div></div>
+            <div class="octagon"><div class="circle"><h1>Hit me!</h1></div><div class="side face1"></div><div class="side face2"></div><div class="side face3"></div></div>
+            <div class="face"></div>    
+            <div class="face"></div>      
+            <div class="face"></div>      
+            <div class="face"></div>      
+            <div class="face"></div>     
+            <div class="face"></div>    
+        </div>
+        <!-- drumstick -->
+        <div class="drumstick1">
+                <div class="rectface1 front"></div>
+                <div class="rectface1 rightside"></div>
+                <div class="rectface1 back"></div>
+                <div class="rectface1 leftside"></div>
+            
+        </div>
+        
+        
+    </div>
+    
+</body>
+</html>

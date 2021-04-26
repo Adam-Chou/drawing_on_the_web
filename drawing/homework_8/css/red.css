@@ -1,0 +1,16 @@
+body{
+    margin: 0px;
+}#woman{
+    position: absolute;
+    width: 50vw;
+    height: auto;
+    bottom: 0px;
+    left: 25vw;
+}#face{
+    display: none;
+}canvas{
+    position: absolute;
+    width: auto;
+    height: 100vh;
+    background-color: black;
+}

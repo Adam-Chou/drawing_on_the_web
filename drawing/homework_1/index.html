@@ -12,31 +12,23 @@
     }body{
         background-color: black;
         text-align: center;
-
     }.video_container{
-        /* margin-top: 5%; */
-        /* border: solid black 20px; */
         display: flex;
-        /* border-radius: 40%; */
-        /* flex-direction: column; */
         justify-content: center;
         align-items: center;
         align-content: center;
-        background-color: rgba(121,21,142,0.3);
+        background-color: rgba(225,64,221,0.3);
         width: 100vw;
         height: 100vh;
-        /* margin-left: 10%; */
         z-index: -1;
-        filter: hue-rotate(60deg);
+        filter: hue-rotate(320deg) blur(1px);;
     }video{
-        filter: blur(1px);
         width: auto;
         height: auto;
         background-size: cover;
         bottom: 0;
         right: 0;
         max-height: 50vh;
-        /* border-radius: 40%; */
     }img{
         position: static;
         display: block;
@@ -48,8 +40,9 @@
         justify-content: center;
         align-content: center;
         mix-blend-mode: color-burn;
-        filter: hue-rotate(50deg);
-    }.textflex{
+    }
+    /* Text stuff, removed */
+    .textflex{
         background-color: white;
         opacity: 0.8;
     }.textflex > h1{
@@ -58,22 +51,20 @@
         font-size: 25px;
         color: white;
         margin: 10px;
-    }.col1, .col2{
+    }
+    /* Columns for video elements */
+    .col1, .col2{
         height: 100vh;
         display: flex;
         flex-direction: column;
         align-content: center;
     }.col1{
         float: left;
-    }.col2{
+    }.col2{ 
         float: right;
     }.image_container{
         position: fixed;
-          /* margin-top: 5%; */
-        /* border: solid black 20px; */
         display: flex;
-        color: rgba(121,21,142);
-        /* flex-direction: column; */
         justify-content: center;
         align-items: center;
         align-content: center;
@@ -85,18 +76,25 @@
         height: 5%;
         position: fixed;
         mix-blend-mode: luminosity;
-        opacity: 0.2;
+        opacity: 0.1;
+        border: solid purple 3px;
+        border-radius: 20px;
         bottom: 47.5vh;
-        transition: opacity .25s ease-in-out;
+        left: 40%;
+        /* opacity: 0.5; */
+        transition: opacity .05s ease-in-out;
+        z-index: 3;
     }audio:hover{
         mix-blend-mode: luminosity;
         opacity: 1;
     }img{
-        filter: saturate(3) hue-rotate(90deg) blur(1px);
+        filter: saturate(3) hue-rotate(315deg) blur(1.25px);
         position: absolute;
         z-index: 2;
         mix-blend-mode: darken;
-    }#img_1{
+    }
+    /* Image Placement */
+    #img_1{
         min-width: 240px;
         min-height: 240px;
         width: 23vw;
@@ -108,17 +106,61 @@
         min-height: 80px;
         width: 8%;
         height: 11%;
-        /* transform: rotate(320deg); */
         top: -65vh;
         left: 61%;
-    }#img_3{
-        min-width: 40px;
-        min-height: 40px;
-        width: 10%;
-        height: 13%;
-        transform: rotate(320deg);
-        top: -45vh;
-        left: 28%;
+    }
+    /* Filter */
+    .fullscreen{
+        position: fixed;
+        width: auto;
+        height: auto;
+        top: 0;
+        right: 0;
+        background-color: rgba(200,210,205,0.3);
+        z-index: 2;
+        background-size: cover;
+    }.fullscreen > video{
+        min-width: 100vw;
+        min-height: 100vh;
+        mix-blend-mode: lighten;
+        opacity: 0.2;
+    }
+    
+    /* Stuff for grid */
+    .boxa, .boxd{
+        
+        background-color: rgba(248, 187, 185, 0.3);
+        mix-blend-mode: lighten;
+    }.boxb, .boxc{
+        
+        background-color: rgba(160, 162, 248, 0.3);
+        mix-blend-mode: lighten;
+    }.boxa{ 
+        grid-area: a;
+    }.boxb{
+        grid-area: b;
+    }.boxc{
+        grid-area: c;
+    }.boxd{
+        grid-area: d;
+    }
+    .grid{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(6,1fr);
+        grid-template-areas: 
+        
+        'b b d a a'
+        'b b d a a'
+        'b b d a a'
+        'b b c a a'
+        'b b c a a'
+        'b b c a a';
     }
 </style>
 <body>
@@ -139,22 +181,17 @@
     
         <div class="video_container">
             <div class="col1">
-                <div class="video_piece video2">
-                    <!-- <div class="textflex"><h1>Brooklyn</h1></div> -->
-                    <video muted autoplay loop>
+                <div class="video_piece video2"><video muted autoplay loop>
                         <source src="media/subway_4.mp4" type="video/mp4">
                     </video>
                 </div>
-                <div class="video_piece video3">
-                    <!-- <div class="textflex"><h1>The Bronx</h1></div> -->
-                    <video muted autoplay loop>
+                <div class="video_piece video3"><video muted autoplay loop>
                         <source src="media/subway_3.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
             <div class="col2">
                 <div class="video_piece video4">
-                    <!-- <div class="textflex"><h1>Queens</h1></div> -->
                     <video muted autoplay loop>
                         <source src="media/subway_1.mp4" type="video/mp4">
                     </video>
@@ -167,17 +204,28 @@
 
             </div>
             
-            
         </div>
         <div class="image_container">
             <img id="img_1" src="media/gorillaz.png">
             <img id="img_2" src="media/teddy.png">
-            <img>
-            <img>
-            <audio class= "audio_piece" autoplay loop controls>
-                <source src="media/closing train.mp3" type="audio/mpeg">
-            </audio>
+            
         </div>
+
+        <div class="grid">
+            <div class="boxa"></div>
+            <div class="boxb"></div>
+            <div class="boxc"></div>
+            <div class="boxd"></div>
+        </div>
+
+        <div class="fullscreen">
+            <video muted autoplay loop>
+                <source src="media/back.mp4" type="video/mp4">
+            </video>
+        </div>
+        <audio class= "audio_piece" autoplay loop controls>
+            <source src="media/closing train.mp3" type="audio/mpeg">
+        </audio>
 
 
     <!-- <div class='background'>

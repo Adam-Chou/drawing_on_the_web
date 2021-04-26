@@ -1,0 +1,14 @@
+body{
+    margin: 0px;
+    background-color: black;
+}.robot{
+    position: absolute;
+    width: 50vw;
+    height: auto;
+    bottom: 0px;
+    left: 25vw;
+}canvas{
+    position: absolute;
+    width: auto;
+    height: 100vh;
+}

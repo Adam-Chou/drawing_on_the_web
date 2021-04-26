@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~Facial.HTML~</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+        body{
+            width: 100%;
+            height: 100%;
+            background-color: lightcyan;
+            margin: 0;
+        }svg{
+            width: 20%;
+            height: auto;
+        }
+        .face{
+            fill: rgb(255, 180, 180);
+            /* transition code */
+            transition: all 1s;
+            transform-origin: 50% 50%;
+            box-sizing: border-box;
+            margin: 3%;
+        }#face1{
+            fill: rgb(245, 243, 160);
+        }#face2{
+            fill: rgb(255, 180, 180);
+        }#face3{
+            fill: rgb(255, 220, 180);
+        }#face4{
+            fill: rgb(183, 255, 180);
+        }#face5{
+            fill: rgb(180, 213, 255);
+        }
+        @supports (filter: saturate(8)) {
+            .face{
+                filter: saturate(4);
+            }.face:hover{
+                filter: saturate(8);
+            }
+        }.face:hover{
+            transform: scale(1.5);
+        }.centered{
+            display: flex;
+            flex-wrap: wrap;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+        }.box{
+            width: 80%;
+            height: 80%;
+        }.rounder{
+            width: 100%;
+            height: 200%;
+            border-radius: 50%;
+            background-color:rgb(255, 142, 101);
+            text-align: center;
+        }.rounder > h1{
+            color: white;
+        }.scale{
+            width: 20%;
+            height: 20%;
+            margin: 5%;
+        }.header{
+            width: 100%;
+            height: 20%;
+            text-align: center;
+        }.header > h1{
+            color: white;
+            font-family: 'Akaya Telivigala', cursive;
+            font-size: 100px;
+            margin: 2%;
+        }
+        /* https://css-tricks.com/adding-stroke-to-web-text/ */
+        @supports (-webkit-text-stroke: 0.5px black) {
+            .header> h1{
+                /* -webkit-text-stroke: 0.01px black; */
+                -webkit-text-fill-color: rgb(255, 176, 176);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>To Have A Face</h1>
+    </div>
+    <div class="centered box">
+        <svg class="face" id="face1">
+            <use href="faces.svg#abstract"/>
+        </svg>
+        <svg class="face" id="face2">
+            <use href="faces.svg#curious"/>
+        </svg>
+        <svg class="face" id="face3">
+            <use href="faces.svg#maniacal"/>
+        </svg>
+        <svg class="face" id="face4">
+            <use href="faces.svg#shocked"/>
+        </svg>
+        <svg class="face" id="face5">
+            <use href="faces.svg#tired"/>
+        </svg>
+        <!-- <div class="scale centered face">
+            <div class="rounder centered ">
+                <h1>(:Faces:)</h1>
+            </div>
+        </div> -->
+        
+    </div>
+    
+
+
+    
+</body>
+</html>

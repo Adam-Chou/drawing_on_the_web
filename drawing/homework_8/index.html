@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love, Death, and Robots</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="flexCol">
+    <main class="flexRow">
+        <div class="container flexCol">
+            <canvas class="overlay" data-color="red"></canvas>
+            <canvas class="innerCanvas flexCol"></canvas></canvas>
+            <h1 class="textbox">Red</h1>
+        </div>
+        <div class="container flexCol">
+            <canvas class="overlay" data-color="blue"></canvas>
+            <canvas class="innerCanvas flexCol"></canvas>
+            <h1 class="textbox">Blue</h1>
+        </div>
+        <div class="container flexCol">
+            <canvas class="overlay" data-color="green"></canvas>
+            <canvas class="innerCanvas flexCol"></canvas>
+            <h1 class="textbox">Green</h1>
+        </div>
+    </main>
+</body>
+<script>
+
+    function linkMaker(item){
+        item.addEventListener("click",(()=>window.location.href = `${item.dataset.color}.html`)); 
+    }
+
+    function overlayDisplay(canvas){
+        const overlay = canvas.parentElement.querySelector("canvas");
+        // can write code to vaariate color
+        if (overlay.dataset.color == "red"){
+            overlay.style.backgroundColor = 'rgb(100,0,0)';
+        }else if (overlay.dataset.color == "blue"){
+            overlay.style.backgroundColor = 'rgb(0,0,100)';
+        }else{
+            overlay.style.backgroundColor = 'rgb(0,100,0)';
+        }
+        
+        canvas.addEventListener("mouseover",()=> {overlay.style.display = "block"; canvas.style.display = "none";});
+        overlay.addEventListener("mouseleave",()=> {overlay.style.display = "none"; canvas.style.display = "block"});
+    }
+
+    function colorCompound(canvas){ //function to be run on every element of array
+        const context = canvas.getContext('2d');
+        let width, height;
+        let pixelScale = window.devicePixelRatio;
+        //Functions
+        function setup(){
+                canvas.width *= pixelScale; canvas.height *= pixelScale;
+                context.scale(pixelScale, pixelScale);
+                draw(); //call draw
+        }
+        function draw(){
+            let pixels = context.getImageData(0, 0, canvas.width, canvas.height);
+            let pixelData = pixels.data;
+
+            // random pixel values
+            for (let i = 0; i < pixelData.length; i += 4) { // jump over every pixel
+                pixelData[i] = Math.floor(Math.random() * 155)+100; // random red channel
+                pixelData[i + 1] = Math.floor(Math.random() * 155)+100; // green channel
+                pixelData[i + 2] = Math.floor(Math.random() * 155)+100; // blue channel
+                pixelData[i + 3] = 255; // alpha channel
+            }
+            context.putImageData(pixels, 0, 0); // write pixels to the canvas
+            
+            requestAnimationFrame(draw);
+            
+        }
+        //processing
+        setup(); //call setup
+    }
+        
+    document.querySelectorAll(".overlay").forEach(linkMaker);
+    document.querySelectorAll(".innerCanvas").forEach((canvas)=> {overlayDisplay(canvas); colorCompound(canvas);});
+
+
+</script>
+</html>
