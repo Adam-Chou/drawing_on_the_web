@@ -13,4 +13,11 @@ canvas{
     height: 100vh;
     position: absolute;
     background-color: black;
+}#skull{
+    display: none;
+    margin: auto;
+    position: absolute;
+    width: 20vw;
+    height: auto;
+    left: 25vw;
 }

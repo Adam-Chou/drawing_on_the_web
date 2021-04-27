@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@900&display=swap');
 body{
     margin: 0;
-    background-color: black;
+    background-color: white;
 }h1{
     text-align: center;
 }main{
@@ -15,18 +15,75 @@ body{
     font-family: 'Cinzel', serif;
 }.container{
     margin: 1%;
-    width: 25%;
-    height: 50%;
+    width: 60%;
+    height: 90%;
     border: white 3px solid;
     border-radius: 20%;
     background-color: lightgrey;
-}.innerCanvas{
+}#innerCanvas{
+    display: grid;
     margin: 3px;
-    width: 90%;
-    height: 90%;
-    border: white 2px dotted;
-    border-radius: 20%;
-}.flexCol{ 
+    width: 88%;
+    height: 88%;
+    box-sizing: border-box;
+    grid-template-rows: repeat(6,1fr);
+    grid-template-columns: repeat(7,1fr);
+    grid-template-areas:
+    "w y c g p r b"
+    "w y c g p r b"
+    "w y c g p r b"
+    "w y c g p r b"
+    "w y c g p r b"
+    /* "w y c g p r b"; */
+    /* "b b b c c c c"; */
+    "bl bl bl bl bl bl bl";
+}#innerCanvas > div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}#innerCanvas > h2{
+    /* font-size: 5px;
+    writing-mode: vertical-rl;
+    text-orientation: upright; */
+}#innerCanvas > .w{
+    grid-area: w;
+    background-color: white;
+    border-top-left-radius: 40%;
+    /* border-bottom-left-radius: 40%; */
+}#innerCanvas > .y{
+    grid-area: y;
+    background-color: yellow;
+}#innerCanvas > .c{
+    grid-area: c;
+    background-color: cyan;
+}#innerCanvas > .g{
+    grid-area: g;
+    background-color: rgb(0, 255, 0);
+}#innerCanvas > .p{
+    grid-area: p;
+    background-color: hotpink;
+}#innerCanvas > .r{
+    grid-area: r;
+    background-color: red;
+}#innerCanvas > .b{
+    grid-area: b;
+    background-color: blue;
+    /* border-bottom-right-radius: 40%; */
+    border-top-right-radius: 40%;
+}#innerCanvas > .bl{
+    grid-area: bl;
+    background-color: black;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+
+
+.flexCol{ 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,12 +93,14 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}.overlay{
-    display: none;
-    position: absolute;
+}#overlay{
     margin: 3px;
-    width: 25%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     border: white 2px solid;
     border-radius: 20%;
+}.innerOverlay{
+    position: absolute;
+    height:33.3%;
+    width:100%;
 }

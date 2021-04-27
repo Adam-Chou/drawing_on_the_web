@@ -2,16 +2,17 @@ let circlemaker = function(){
     //variable declarations:
         const canvas = document.getElementById("background");
         const context = canvas.getContext("2d");
+        const skull = document.querySelector("img");
 
         let width, height;
         let pixelScale = window.devicePixelRatio; //set pixel ratio
         let counter = 0;
-        let changeColor = true; //boolean to set color change
+        let file; //instantiate data
 
     async function setup(){ //initialize setup
         const url = `https://api.carbonintensity.org.uk/intensity`; 
-        let file = await apiCall(url);
-        console.log(file);
+        file = await apiCall(url);
+
         width = window.innerWidth;
         height = window.innerHeight;
 
@@ -26,6 +27,9 @@ let circlemaker = function(){
         context.save();
         context.fillStyle= "black";
         context.fillRect(0, 0, canvas.width, canvas.height); //clear canvas
+
+        context.moveTo(0,0);
+        context.drawImage(skull,(width/13)/2, -1*(width/15),(width*0.8)/pixelScale,(width*0.8)/pixelScale);
         context.restore();
         
     }
@@ -33,11 +37,16 @@ let circlemaker = function(){
     function draw(){ //draw circles
         //With help from https://stackoverflow.com/questions/58333678/draw-heart-using-javascript-in-any-postionx-y
         
-        if (counter >= 400){
+        if (counter >= 450){
             context.save();
             context.fillStyle= "#000000";
-            changeColor = false;  
+            context.moveTo(0,0);
+            context.drawImage(skull,(width/13)/2, -1*(width/15),(width*0.8)/pixelScale,(width*0.8)/pixelScale);
+            context.restore();
             context.fillRect(0, 0, canvas.width, canvas.height); //clear canvas
+            context.save();
+            context.moveTo(0,0);
+            context.drawImage(skull,(width/13)/2, -1*(width/15),(width*0.8)/pixelScale,(width*0.8)/pixelScale);
             context.restore();
             counter = 0;
         }
@@ -45,7 +54,7 @@ let circlemaker = function(){
         context.save();
         context.lineWidth = ".01px solid";
         context.moveTo(width/2, height/2);
-        for(let i = 0; i< 9600; i++){
+        for(let i = 0; i< 1200; i++){
             context.beginPath();
             let x = (Math.random()*width);
             let y = (Math.random()*height);

@@ -7,14 +7,22 @@
     <title>Love, Death, and Robots</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="flexCol">
-    <main class="flexRow">
+<body>
+    <main class="flexCol">
         <div class="container flexCol">
-            <canvas class="overlay" data-color="red"></canvas>
-            <canvas class="innerCanvas flexCol"></canvas></canvas>
-            <h1 class="textbox">Red</h1>
+            <div id="innerCanvas" class="flexCol">
+                <div class="w"></div>
+                <div class="y"></div>
+                <div class="c"></div>
+                <div class="r"></div>
+                <div class="b"></div>
+                <div class="p"></div>
+                <div class="g"></div>
+                <div class="bl"></div>
+            </div>
         </div>
-        <div class="container flexCol">
+            <h1 class="textbox">We interrupt your scheduled programming to bring you...</h1>
+        <!-- <div class="container flexCol">
             <canvas class="overlay" data-color="blue"></canvas>
             <canvas class="innerCanvas flexCol"></canvas>
             <h1 class="textbox">Blue</h1>
@@ -23,12 +31,14 @@
             <canvas class="overlay" data-color="green"></canvas>
             <canvas class="innerCanvas flexCol"></canvas>
             <h1 class="textbox">Green</h1>
-        </div>
+        </div> -->
     </main>
 </body>
 <script>
 
-    function linkMaker(item){
+
+/*
+function linkMaker(item){
         item.addEventListener("click",(()=>window.location.href = `${item.dataset.color}.html`)); 
     }
 
@@ -79,7 +89,6 @@
         
     document.querySelectorAll(".overlay").forEach(linkMaker);
     document.querySelectorAll(".innerCanvas").forEach((canvas)=> {overlayDisplay(canvas); colorCompound(canvas);});
-
-
+*/
 </script>
 </html>
