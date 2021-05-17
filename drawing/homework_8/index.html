@@ -8,87 +8,12 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <main class="flexCol">
-        <div class="container flexCol">
-            <div id="innerCanvas" class="flexCol">
-                <div class="w"></div>
-                <div class="y"></div>
-                <div class="c"></div>
-                <div class="r"></div>
-                <div class="b"></div>
-                <div class="p"></div>
-                <div class="g"></div>
-                <div class="bl"></div>
-            </div>
-        </div>
-            <h1 class="textbox">We interrupt your scheduled programming to bring you...</h1>
-        <!-- <div class="container flexCol">
-            <canvas class="overlay" data-color="blue"></canvas>
-            <canvas class="innerCanvas flexCol"></canvas>
-            <h1 class="textbox">Blue</h1>
-        </div>
-        <div class="container flexCol">
-            <canvas class="overlay" data-color="green"></canvas>
-            <canvas class="innerCanvas flexCol"></canvas>
-            <h1 class="textbox">Green</h1>
-        </div> -->
+    <main class="flexRow">
+        <div class="box red" data-link="red"><img src="home_img/heart.PNG"></div>
+        <div class="box green" data-link="green"><img src="home_img/robot.PNG"></div>
+        <div class="box blue" data-link="blue"><img src="home_img/skull.PNG"></div>
     </main>
+    <div id="textbox"><span id="love">Love </span>/<span id="death">Death </span>/<span id="robots">and Robots</span></div>
 </body>
-<script>
-
-
-/*
-function linkMaker(item){
-        item.addEventListener("click",(()=>window.location.href = `${item.dataset.color}.html`)); 
-    }
-
-    function overlayDisplay(canvas){
-        const overlay = canvas.parentElement.querySelector("canvas");
-        // can write code to vaariate color
-        if (overlay.dataset.color == "red"){
-            overlay.style.backgroundColor = 'rgb(100,0,0)';
-        }else if (overlay.dataset.color == "blue"){
-            overlay.style.backgroundColor = 'rgb(0,0,100)';
-        }else{
-            overlay.style.backgroundColor = 'rgb(0,100,0)';
-        }
-        
-        canvas.addEventListener("mouseover",()=> {overlay.style.display = "block"; canvas.style.display = "none";});
-        overlay.addEventListener("mouseleave",()=> {overlay.style.display = "none"; canvas.style.display = "block"});
-    }
-
-    function colorCompound(canvas){ //function to be run on every element of array
-        const context = canvas.getContext('2d');
-        let width, height;
-        let pixelScale = window.devicePixelRatio;
-        //Functions
-        function setup(){
-                canvas.width *= pixelScale; canvas.height *= pixelScale;
-                context.scale(pixelScale, pixelScale);
-                draw(); //call draw
-        }
-        function draw(){
-            let pixels = context.getImageData(0, 0, canvas.width, canvas.height);
-            let pixelData = pixels.data;
-
-            // random pixel values
-            for (let i = 0; i < pixelData.length; i += 4) { // jump over every pixel
-                pixelData[i] = Math.floor(Math.random() * 155)+100; // random red channel
-                pixelData[i + 1] = Math.floor(Math.random() * 155)+100; // green channel
-                pixelData[i + 2] = Math.floor(Math.random() * 155)+100; // blue channel
-                pixelData[i + 3] = 255; // alpha channel
-            }
-            context.putImageData(pixels, 0, 0); // write pixels to the canvas
-            
-            requestAnimationFrame(draw);
-            
-        }
-        //processing
-        setup(); //call setup
-    }
-        
-    document.querySelectorAll(".overlay").forEach(linkMaker);
-    document.querySelectorAll(".innerCanvas").forEach((canvas)=> {overlayDisplay(canvas); colorCompound(canvas);});
-*/
-</script>
+<script src="scripts/index.js"></script>
 </html>

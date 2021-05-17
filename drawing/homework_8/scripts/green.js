@@ -59,6 +59,31 @@ let drawing = async () => {
         }else{ count+=Math.floor(Math.random()*5); }
         context.stroke();
         context.restore();
+
+        context.save();
+            context.lineWidth = ".01px solid";
+            context.moveTo(width/2, height/2);
+            for(let i = 0; i< 100; i++){
+                context.beginPath();
+                let x = (Math.random()*width);
+                let y = (Math.random()*height);
+                let n = noise.simplex2(x,y); //woo perlin noise! from https://github.com/josephg/noisejs module
+                
+                if ((Math.floor(Math.random()*10))%.1 == 0){
+                    context.fillStyle = `rgba(0,0,0,${Math.random()*n})`;
+                }else{ 
+                    context.fillStyle = `rgba(0,${(Math.random()*120+20)*n},0,${Math.random()*n})`; 
+                }
+                context.arc(x*n,y*n, Math.abs(5*n), 0, 2*Math.PI);
+                context.save();
+                // context.rotate(45 * Math.PI / 180);
+                // context.rect(x,y, Math.abs(5*n), Math.abs(5*n));
+                context.restore();
+
+                context.closePath();
+                context.fill();
+            }
+        context.restore();
         // console.log(count)
         requestAnimationFrame(draw);
     }

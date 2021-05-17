@@ -1,106 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@900&display=swap');
 body{
     margin: 0;
-    background-color: white;
-}h1{
-    text-align: center;
-}main{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
+}#textbox{
+    margin-top: 2.5%;
+    width: 80vw;
+    height: auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}span{
+    margin: 0;
+    width: auto;
+    color: white;
+    font-size: 30px;
+    font-family: Cinzel;
+    opacity: 0.6;
+}main{
+    width: 80vw;
+    height: 50vh;
 }div{
     box-sizing: border-box;
-}.textbox{
-    text-align: center;
-    font-size: 20px;
-    font-family: 'Cinzel', serif;
-}.container{
-    margin: 1%;
-    width: 60%;
-    height: 90%;
-    border: white 3px solid;
-    border-radius: 20%;
-    background-color: lightgrey;
-}#innerCanvas{
-    display: grid;
-    margin: 3px;
-    width: 88%;
-    height: 88%;
-    box-sizing: border-box;
-    grid-template-rows: repeat(6,1fr);
-    grid-template-columns: repeat(7,1fr);
-    grid-template-areas:
-    "w y c g p r b"
-    "w y c g p r b"
-    "w y c g p r b"
-    "w y c g p r b"
-    "w y c g p r b"
-    /* "w y c g p r b"; */
-    /* "b b b c c c c"; */
-    "bl bl bl bl bl bl bl";
-}#innerCanvas > div{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}#innerCanvas > h2{
-    /* font-size: 5px;
-    writing-mode: vertical-rl;
-    text-orientation: upright; */
-}#innerCanvas > .w{
-    grid-area: w;
-    background-color: white;
-    border-top-left-radius: 40%;
-    /* border-bottom-left-radius: 40%; */
-}#innerCanvas > .y{
-    grid-area: y;
-    background-color: yellow;
-}#innerCanvas > .c{
-    grid-area: c;
-    background-color: cyan;
-}#innerCanvas > .g{
-    grid-area: g;
-    background-color: rgb(0, 255, 0);
-}#innerCanvas > .p{
-    grid-area: p;
-    background-color: hotpink;
-}#innerCanvas > .r{
-    grid-area: r;
-    background-color: red;
-}#innerCanvas > .b{
-    grid-area: b;
-    background-color: blue;
-    /* border-bottom-right-radius: 40%; */
-    border-top-right-radius: 40%;
-}#innerCanvas > .bl{
-    grid-area: bl;
-    background-color: black;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-}
-
-
-
-.flexCol{ 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }.flexRow{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}#overlay{
-    margin: 3px;
-    width: 100%;
+}
+.box{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 33%;
     height: 100%;
-    border: white 2px solid;
-    border-radius: 20%;
-}.innerOverlay{
-    position: absolute;
-    height:33.3%;
-    width:100%;
+    opacity: 0.6;
+    border: 5px solid white;
+    transition: width 0.5s;
+}.box > img{
+    max-width: 325px;
+    min-width: 300px;
+    margin: 0px;
+    width: 100%;
+    height: auto;
+}.red{
+    background-color: rgb(205, 50, 50);
+    border-top-left-radius: 20%;
+    border-bottom-left-radius: 20%;
+
+    border-top-style: solid;
+    border-right-style: none;
+    border-bottom-style: solid;
+    border-left-style: solid;
+}.blue{
+    background-color: rgb(50, 50, 205);
+    border-top-right-radius: 20%;
+    border-bottom-right-radius: 20%;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: none;
+}.green{
+    background-color: rgb(50, 205, 50);
+    border-top-style: solid;
+    border-right-style: none;
+    border-bottom-style: solid;
+    border-left-style: none;
 }

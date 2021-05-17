@@ -1,7 +1,16 @@
-let facemaker = function(){
-    const face = document.getElementById('face');
-    let data; //instantiate data
-    
+let facemaker = async function(){
+    // const nameplate = document.getElementById("name");
+    const url = `https://randomuser.me/api`; 
+    let file = JSON.parse( await apiCall(url)); //from general script, parse json file
+    let gender = file.results[0].gender; //get gender
+    let name = `${file.results[0].name.title} ${file.results[0].name.first} ${file.results[0].name.last}`;
+    // console.log(file, gender, name);
+
+    const face = document.querySelector(`.${gender}`)
+    const person = document.querySelector(`#${gender}`)
+    person.style.display = "block";
+    // nameplate.innerHTML = name; variates name
+
     if(face){ //only if image works
     //variable declarations:
         const canvas = document.getElementById("background");
@@ -11,10 +20,7 @@ let facemaker = function(){
         let pixelScale = window.devicePixelRatio; //set pixel ratio
         let counter = 1;
 
-    async function setup(){ //initialize setup
-        const url = `https://randomuser.me/api`; 
-        let file = await apiCall(url); //from general script
-        console.log(file);
+    function setup(){ //initialize setup
         width = window.innerWidth;
         height = window.innerHeight;
 
@@ -35,10 +41,6 @@ let facemaker = function(){
     function draw(){ 
 
         if (counter >= 4){
-            // context.save();
-            // context.fillStyle= "#000000";
-            // context.fillRect(0, 0, canvas.width, canvas.height); //clear canvas
-            // context.restore();
             counter = 1;
         }
         
@@ -51,7 +53,7 @@ let facemaker = function(){
             let y = (Math.random()*height);
             let n = noise.simplex2(x,y); //woo perlin noise! from https://github.com/josephg/noisejs module
             // context.arc(x*n,y*n, Math.abs(5*n), 0, 2*Math.PI);
-            
+            context.globalAlpha = 0.6; //global alpha 
             // variation 1
             context.drawImage(face, x*n,y*n,200*n,200*n);
             
@@ -70,11 +72,9 @@ let facemaker = function(){
 
         requestAnimationFrame(draw);
     }
-
-
     setup(); draw();
-    }
     window.addEventListener("resize", setup);
+    }
 };
 
 window.addEventListener("load",facemaker);

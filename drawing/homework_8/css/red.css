@@ -1,6 +1,8 @@
 body{
     margin: 0px;
-}#woman{
+}
+
+/* #woman{ 
     position: absolute;
     width: 50vw;
     height: auto;
@@ -8,9 +10,33 @@ body{
     left: 25vw;
 }#face{
     display: none;
-}canvas{
+}*/
+
+
+canvas{
     position: absolute;
     width: auto;
     height: 100vh;
     background-color: black;
+}.person{
+    display: none;
+    position: absolute;
+    width: 50vw;
+    height: auto;
+    bottom: 0px;
+    left: 25vw;
+    opacity: 0.8;
+}.face{
+    display: none;
+}#name{
+    margin: 0px;
+    position: absolute;
+    /* border: white 1px solid; */
+    width: 25%;
+    height:5%;
+    left:37.5%;
+    bottom: 0px;
+    text-align: center;
+    color: white;
 }
+
